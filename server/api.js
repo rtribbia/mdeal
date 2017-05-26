@@ -33,7 +33,7 @@ module.exports = function(manager) {
 		    res.json(responseJSON);
 		});
 
-	router.route('/room/:roomId/:game_id')
+	router.route('/room/:roomId/games')
 		.put(function(req, res) {
 		    res.send('/api/games/' + req.params.game_id + ' PUT')
 		});
