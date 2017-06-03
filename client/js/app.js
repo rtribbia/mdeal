@@ -8,6 +8,13 @@ var api = {
 			logScript(JSON.stringify(data));
 		})
 	},
+	getRoom: function() {
+		logStatus('get room...');
+			$.getJSON( "api/room/90414e7e-ad08-4647-97ad-d5880aefb6af", function( data ) {
+				logStatus('games retreived.');
+				logScript(JSON.stringify(data));
+		})
+	},
 	joinRoom: function(playerName, roomId) {
 		logStatus('join room');
 		var payload = {"name":playerName};
@@ -36,6 +43,7 @@ function join2Room() {
 	api.joinRoom('Player2','90414e7e-ad08-4647-97ad-d5880aefb6af');
 }
 
+
 function logScript(msg) {
 	document.getElementById('scriptLog').innerHTML = msg;
 }
@@ -44,6 +52,7 @@ function logStatus(msg) {
 	document.getElementById('status').innerHTML = msg;
 }
 
-document.getElementById("getGames").onclick = api.getRooms;
+document.getElementById("getRooms").onclick = api.getRooms;
+document.getElementById("roomStatus").onclick = api.getRoom;
 document.getElementById("p1join").onclick = join1Room;
 document.getElementById("p2join").onclick = join2Room;

@@ -3,6 +3,7 @@ var uuid = require('uuid');
 function Player(name) {
 	this.name = name;
 	this.id = 'p-' + uuid.v4();
+	this.status = "new";
 }
 
 Player.prototype.getName = function() {
@@ -21,10 +22,19 @@ Player.prototype.setGameId = function(gameId) {
 	this.gameId = gameId;
 }
 
+Player.prototype.getStatus = function() {
+	return this.status;
+}
+
+Player.prototype.setStatus = function(status) {
+	this.status = status;
+}
+
 Player.prototype.getJSON = function() {
 	var JSON = {};
 	JSON.name = this.name;
 	JSON.id = this.id;
+	JSON.status = this.status;
 	return JSON;
 }
 
